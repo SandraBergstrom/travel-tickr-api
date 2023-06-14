@@ -3,6 +3,7 @@ from .models import Traveler
 
 
 class TravelerSerializer(serializers.ModelSerializer):
+    # Serializer class for the traveler model
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

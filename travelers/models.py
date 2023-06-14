@@ -34,7 +34,7 @@ class Traveler(models.Model):
     def __str__(self):
         return f"Traveler: {self.owner}"
 
-
+# Signal receiver to reate a Traveler object when a User is crated
 def create_traveler(sender, instance, created, **kwargs):
     if created:
         Traveler.objects.create(owner=instance)

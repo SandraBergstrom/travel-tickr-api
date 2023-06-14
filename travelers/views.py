@@ -7,16 +7,21 @@ from django.http import Http404
 
 
 class TravelerList(APIView):
+    """
+    List all travelers
+    No Create view (post method), as profile creation handled by django signals
+    """
     def get(self, request):
         travelers = Traveler.objects.all()
         serializer = TravelerSerializer(travelers, many=True)
-        return Response(travelers)
+        return Response(serializer.data)
 
 
 class TravelerDetail(APIView):
     serializer_class = TravelerSerializer
-    
+
     def get_object(self, pk):
+        # Retrive a specific traverel based on the primary key
         try:
             traveler = Traveler.objects.get(pk=pk)
             return traveler
@@ -24,11 +29,13 @@ class TravelerDetail(APIView):
             raise Http404
 
     def get(self, request, pk):
+        # Handle GET request to retrieve details of a traveler
         traveler = self.get_object(pk)
         serializer = TravelerSerializer(traveler)
         return Response(serializer.data)
 
     def put(self, request, pk):
+        # Handle PUT request to update details of a traveler
         traveler = self.get_object(pk)
         serializer = TravelerSerializer(traveler, data=request.data)
         if serializer.is_valid():
