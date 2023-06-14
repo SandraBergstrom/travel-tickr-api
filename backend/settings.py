@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-b#y*63bdif=gfol-q-2irw-tyv=(fy-pvfep8t2#p2_g#_7u-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-sandrabergs-traveltickr-f0an5wfcl6d.ws-eu99.gitpod.io']
 
 
 # Application definition
@@ -50,8 +50,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
 
-    'travelers/',
+    'travelers',
 ]
 
 MIDDLEWARE = [
