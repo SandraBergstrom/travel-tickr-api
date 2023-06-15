@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     'travelers',
     'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
