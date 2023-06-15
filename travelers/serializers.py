@@ -1,15 +1,15 @@
 from rest_framework import serializers
 from .models import Traveler
 from followers.models import Follower
-from likes.models import Like
 
 
 class TravelerSerializer(serializers.ModelSerializer):
-    # Serializer class for the traveler model
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
-    like_id = serializers.SerializerMethodField()
+    posts_count = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -25,19 +25,11 @@ class TravelerSerializer(serializers.ModelSerializer):
             return following.id if following else None
         return None
     
-    def get_like_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            like = Like.objects.filter(
-                owner = user, post = obj
-            ).first()
-            return like.id if like else None
-        return None
-    
+
     class Meta:
         model = Traveler
-        fields = ['id', 'owner', 'created_at',
-                  'updated_at', 'name', 'content', 'image',
-                  'top_bucket_list', 'one_important_thing',
-                  'favorite_place', 'is_owner', 'following_id',
-                  'like_id']
+        fields = [
+            'id', 'owner', 'created_at', 'updated_at', 'name',
+            'content', 'image', 'is_owner', 'following_id',
+            'posts_count', 'followers_count', 'following_count'
+        ]
