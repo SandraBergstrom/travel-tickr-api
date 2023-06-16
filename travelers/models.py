@@ -27,6 +27,7 @@ class Traveler(models.Model):
     top_bucket_list = models.TextField(blank=True)
     one_important_thing = models.TextField(blank=True)
     favorite_place = models.TextField(blank=True)
+    has_mobility_disability = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_at']
