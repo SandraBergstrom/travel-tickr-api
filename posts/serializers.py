@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from posts.models import Post
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -7,6 +8,15 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+    
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
+
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
