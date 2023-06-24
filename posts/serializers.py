@@ -6,8 +6,8 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    traveler_id = serializers.ReadOnlyField(source='owner.traveler.id')
+    traveler_image = serializers.ReadOnlyField(source='owner.traveler.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
