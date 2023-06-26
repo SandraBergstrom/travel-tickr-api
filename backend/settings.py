@@ -35,7 +35,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+# DEBUG = 'DEV' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-sandrabergs-traveltickr-f0an5wfcl6d.ws-eu99.gitpod.io',
                  '8000-sandrabergs-traveltickr-f0an5wfcl6d.ws-eu100.gitpod.io',
