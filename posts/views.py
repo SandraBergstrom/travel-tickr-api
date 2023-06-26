@@ -3,7 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from backend.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
-from django.db import Count
+from django.db.models import Count
 
 
 class PostList(generics.ListCreateAPIView):
