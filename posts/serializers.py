@@ -10,6 +10,8 @@ class PostSerializer(serializers.ModelSerializer):
     traveler_image = serializers.ReadOnlyField(source='owner.traveler.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    likes_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
@@ -40,5 +42,5 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'traveler_id',
             'traveler_image', 'created_at', 'updated_at',
-            'title', 'content', 'image',
+            'title', 'content', 'image', 'likes_count', 'comments_count',
         ]

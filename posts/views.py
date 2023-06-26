@@ -11,7 +11,10 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    )
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
