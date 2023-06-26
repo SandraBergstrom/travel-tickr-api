@@ -22,6 +22,17 @@ class PostList(generics.ListCreateAPIView):
         'likes_count',
     ]
 
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile',
+    ]
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
