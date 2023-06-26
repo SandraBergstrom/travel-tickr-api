@@ -8,7 +8,8 @@ class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     traveler_id = serializers.ReadOnlyField(source='owner.traveler.id')
-    traveler_image = serializers.ReadOnlyField(source='owner.traveler.image.url')
+    traveler_image = serializers.ReadOnlyField(
+        source='owner.traveler.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
@@ -17,10 +18,9 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
-    
+
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
-
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
