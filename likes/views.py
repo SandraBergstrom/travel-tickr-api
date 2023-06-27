@@ -24,6 +24,6 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     unlike a post if owner of that like 
     """
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Like.objects.all()
     serializer_class = LikeSerializer
+    queryset = Like.objects.all()
 
