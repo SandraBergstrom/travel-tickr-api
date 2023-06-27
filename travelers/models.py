@@ -3,16 +3,6 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
-# @receiver(post_save, sender=User)
-# def create_traveler(sender, instance, created, **kwargs):
-#     if created:
-#         try:
-#             traveler = Traveler.objects.create(owner=instance)
-#             print("Traveler created:", traveler)
-#         except Exception as e:
-#             print("Error creating traveler:", e)
-
-
 # Model connected to djangos user model to extend the information
 # we will get about the user
 class Traveler(models.Model):
