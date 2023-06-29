@@ -9,14 +9,14 @@ class Traveler(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    name = models.CharField(max_length=500, blank=True)
-    content = models.TextField(blank=True)
+    name = models.CharField(max_length=100, blank=True)
+    content = models.CharField(max_length=200, blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_uwgpte'
     )
     top_bucket_list = models.TextField(blank=True)
-    one_important_thing = models.TextField(blank=True)
-    favorite_place = models.TextField(blank=True)
+    one_important_thing = models.CharField(max_length=200, blank=True)
+    favorite_place = models.CharField(max_length=200, blank=True)
     has_mobility_disability = models.BooleanField(default=False)
 
     class Meta:
