@@ -15,3 +15,11 @@ class LocationList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class LocationDetail(generics.RetrieveDestroyAPIView):
+    """ 
+    Retrieve a location.  
+    """
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LocationSerializer
+    queryset = Location.objects.all()
