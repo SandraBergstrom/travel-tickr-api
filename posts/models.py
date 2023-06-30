@@ -15,21 +15,10 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
+    location = models.ForeignKey('locations.Location', related_name="posts", on_delete=models.CASCADE, default=None)
 
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
         return f'{self.id} {self.title}'
-
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-
-    #     if self.image:
-    #         img = Image.open(self.image.path)
-    #         max_size = (1024, 1024)
-    #         img.thumbnail(max_size, Image.ANTIALIAS)
-
-    #         # Adjust the image quality to balance size and visual quality
-    #         img.save(self.image.path, optimize=True, quality=90)
-
