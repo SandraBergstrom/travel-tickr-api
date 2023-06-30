@@ -11,7 +11,6 @@ class PostSerializer(serializers.ModelSerializer):
     traveler_id = serializers.ReadOnlyField(source='owner.traveler.id')
     traveler_image = serializers.ReadOnlyField(
         source='owner.traveler.image.url')
-    location = LocationSerializer()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
@@ -54,6 +53,6 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'traveler_id',
-            'traveler_image', 'location', 'created_at', 'updated_at',
+            'traveler_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'likes_count', 'comments_count', 'like_id',
         ]

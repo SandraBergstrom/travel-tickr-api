@@ -15,7 +15,6 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
-    location = models.ForeignKey('locations.Location', related_name="posts", on_delete=models.CASCADE, default=None)
 
     class Meta:
         ordering = ['-created_at']
