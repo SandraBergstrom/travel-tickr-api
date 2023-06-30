@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
-from locations.serializers import LocationSerializer
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
