@@ -2,7 +2,9 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from backend.permissions import IsOwnerOrReadOnly
 from .models import Post
+from locations.models import Location
 from .serializers import PostSerializer
+from locations.serializers import LocationSerializer
 from django.db.models import Count
 
 
@@ -41,7 +43,15 @@ class PostList(generics.ListCreateAPIView):
 
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        post = serializer.save(owner=self.request.user)
+        location_data = self.request.data.get('location')
+        if location_data:
+            location_data['post'] = post.id
+            location_serializer = LocationSerializer(data=location_data)
+            if location_serializer.is_valid():
+                location_serializer.save()
+            else:
+                print(location_serializer.errors)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
