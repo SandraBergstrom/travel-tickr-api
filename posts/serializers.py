@@ -67,7 +67,7 @@ class PostSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             location = Location.objects.filter(
-                owner=user, post=obj
+                owner=user, post_id=obj.id
             ).first()
             return location.id if location else None
         return None
