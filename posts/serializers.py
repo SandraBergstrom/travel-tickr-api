@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
     # location_id = serializers.SerializerMethodField()
-    bucketlist_owner = serializer.ReadOnlyField(source='bucketlist.owner.traveler.id')
+    bucketlist_owner = serializers.ReadOnlyField(source='bucketlist.owner.traveler.id')
     bucketlist_id = serializers.SerializerMethodField()
     bucketlists_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
