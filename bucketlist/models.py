@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from posts.models import Post
 
 
-class BucketlistItem(models.Model):
+class Bucketlist(models.Model):
     """
-    Bucketlist item model with a foreign key to user
+    Bucketlist model with a foreign key to user
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
