@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
+from bucketlist.models import Bucketlist
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
@@ -14,6 +15,8 @@ class PostSerializer(serializers.ModelSerializer):
     updated_at = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
+    bucketlist_id = serializers.SerializerMethodField()
+    bucketlists_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
 
     def get_created_at(self, obj):
@@ -48,10 +51,21 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+    def get_bucketlist_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            bucketlist = Bucketlist.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return bucketlist.id if bucketlist else None
+        return None
+
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'traveler_id',
             'traveler_image', 'created_at', 'updated_at',
-            'title', 'content', 'image', 'likes_count', 'comments_count', 'like_id',
+            'title', 'content', 'image', 'likes_count',
+            'comments_count', 'like_id', 'bucketlists_count',
+            'bucketlist_id'
         ]
