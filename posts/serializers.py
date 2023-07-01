@@ -17,10 +17,10 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
     # location_id = serializers.SerializerMethodField()
+    bucketlist_owner = serializer.ReadOnlyField(source='bucketlist.owner.traveler.id')
     bucketlist_id = serializers.SerializerMethodField()
     bucketlists_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    # truncated_content = serializers.SerializerMethodField()
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
@@ -58,7 +58,7 @@ class PostSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             bucketlist = Bucketlist.objects.filter(
-                owner=user, post=obj
+                owner__owner=user, post=obj
             ).first()
             return bucketlist.id if bucketlist else None
         return None
@@ -71,12 +71,6 @@ class PostSerializer(serializers.ModelSerializer):
     #         ).first()
     #         return location.id if location else None
     #     return None
-
-    # def get_truncated_content(self, obj):
-    #     max_length = 100 # maximum number of characters
-    #     if len(obj.content) > max_length: # if content is longer
-    #         return obj.content[:max_length] + '...' # truncate it and add ...
-    #     return obj.content #otherwise return the content as is
 
     class Meta:
         model = Post
