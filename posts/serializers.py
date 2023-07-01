@@ -20,7 +20,7 @@ class PostSerializer(serializers.ModelSerializer):
     bucketlist_id = serializers.SerializerMethodField()
     bucketlists_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    truncated_content = serliaziers.SerializerMethodField()
+    truncated_content = serializers.SerializerMethodField()
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
