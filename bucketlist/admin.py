@@ -1,6 +1,4 @@
-from django.apps import AppConfig
+from django.contrib import admin
+from .models import Bucketlist
 
-
-class bucketlistConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Bucketlist'
+admin.site.register(Bucketlist)
