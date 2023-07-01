@@ -15,7 +15,8 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        bucketlists_count=Count('comment', distinct=True)
     ).order_by('-created_at')
 
     filter_backends = [
@@ -27,6 +28,7 @@ class PostList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__followed__owner__traveler',
         'likes__owner__traveler',
+        'bucketlist__owner__traveler',
         'owner__traveler',
     ]
     search_fields = [
@@ -36,7 +38,9 @@ class PostList(generics.ListCreateAPIView):
     ordering_fields = [
         'likes_count',
         'comments_count',
+        'bucketlists_count',
         'likes__created_at',
+        'bucketlists__created_at',
     ]
 
 
@@ -53,5 +57,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        bucketlists_count=Count('bucketlist', distinct=True)
     ).order_by('-created_at')
