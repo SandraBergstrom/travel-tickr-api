@@ -30,6 +30,7 @@ class PostList(generics.ListCreateAPIView):
         'likes__owner__traveler',
         'bucketlist__owner__traveler',
         'owner__traveler',
+        'bucketlist_owner',
     ]
     search_fields = [
         'owner__username',
