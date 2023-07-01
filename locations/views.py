@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from backend.permissions import IsOwnerOrReadOnly
 from .models import Location
+from posts.models import Post
 from .serializers import LocationSerializer
 
 
@@ -10,7 +11,7 @@ class LocationList(generics.ListCreateAPIView):
     Create a location if logged in.
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Location.objects.all()
+    queryset = Location.objects.all().select_related('post')
     serializer_class = LocationSerializer
 
     def perform_create(self, serializer):
@@ -22,4 +23,4 @@ class LocationDetail(generics.RetrieveDestroyAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LocationSerializer
-    queryset = Location.objects.all()
+    queryset = Location.objects.all().select_related('post')
