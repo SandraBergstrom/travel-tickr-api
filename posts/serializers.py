@@ -79,5 +79,5 @@ class PostSerializer(serializers.ModelSerializer):
             'traveler_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'likes_count',
             'comments_count', 'like_id', 'bucketlists_count',
-            'bucketlist_id' 
+            'bucketlist_id', 'bucketlist_owner'
         ]
