@@ -11,7 +11,7 @@ class LocationList(generics.ListCreateAPIView):
     Create a location if logged in.
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Location.objects.all().select_related('post')
+    queryset = Location.objects.all()
     serializer_class = LocationSerializer
 
     def perform_create(self, serializer):
@@ -23,4 +23,4 @@ class LocationDetail(generics.RetrieveDestroyAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LocationSerializer
-    queryset = Location.objects.all().select_related('post')
+    queryset = Location.objects.all()
