@@ -13,7 +13,7 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.annotate(
+    queryset = Post.objects.prefetch_related('location').annotate(
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True),
         bucketlists_count=Count('comment', distinct=True)

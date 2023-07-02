@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from locations.models import Location
 from PIL import Image
 
 
@@ -15,6 +16,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']

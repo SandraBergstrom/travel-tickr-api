@@ -2,7 +2,8 @@ from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
 from bucketlist.models import Bucketlist
-# from locations.models import Location
+from locations.models import Location
+from locations.serializers import LocationSerializer
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
@@ -16,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
     updated_at = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     like_id = serializers.SerializerMethodField()
-    # location_id = serializers.SerializerMethodField()
+    location = LocationSerializer()
     # bucketlist_owner = serializers.ReadOnlyField(source='bucketlist.owner.traveler.id')
     bucketlist_id = serializers.SerializerMethodField()
     bucketlists_count = serializers.ReadOnlyField()
@@ -79,5 +80,5 @@ class PostSerializer(serializers.ModelSerializer):
             'traveler_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'likes_count',
             'comments_count', 'like_id', 'bucketlists_count',
-            'bucketlist_id'
+            'bucketlist_id', 'location'
         ]
