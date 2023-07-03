@@ -3,6 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from backend.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
+from django.db.models import Count
 
 
 class CommentList(generics.ListCreateAPIView):
