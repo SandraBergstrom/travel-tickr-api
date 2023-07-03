@@ -18,11 +18,11 @@ class LikeSerializer(serializers.ModelSerializer):
         post = validated_data.get('post')
         comment = validated_data.get('comment')
 
-        if post and comment:
-            raise serializers.ValidationError('Either post or comment, not both')
+        # if post and comment:
+        #     raise serializers.ValidationError('Either post or comment, not both')
 
-        if not post and not comment:
-            raise serializers.ValidationError('Either post or comment must be provided')
+        # if not post and not comment:
+        #     raise serializers.ValidationError('Either post or comment must be provided')
 
         try:
             return super().create(validated_data)
