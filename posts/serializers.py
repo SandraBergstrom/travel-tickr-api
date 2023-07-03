@@ -13,6 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
         source='owner.traveler.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    like_id = serilizers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     bucketlist_id = serializers.SerializerMethodField()
     bucketlists_count = serializers.ReadOnlyField()
