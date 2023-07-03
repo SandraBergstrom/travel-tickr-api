@@ -13,10 +13,10 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.prefetch_related('location').annotate(
+    queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True),
-        bucketlists_count=Count('comment', distinct=True)
+        bucketlists_count=Count('bucketlist', distinct=True)
     ).order_by('-created_at')
 
     filter_backends = [
@@ -30,7 +30,6 @@ class PostList(generics.ListCreateAPIView):
         'likes__owner__traveler',
         'bucketlist__owner__traveler',
         'owner__traveler',
-        # 'bucketlist__owner',
     ]
     search_fields = [
         'owner__username',
@@ -43,7 +42,6 @@ class PostList(generics.ListCreateAPIView):
         'likes__created_at',
         'bucketlists__created_at',
     ]
-
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
