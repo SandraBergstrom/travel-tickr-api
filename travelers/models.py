@@ -14,10 +14,8 @@ class Traveler(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_profile_uwgpte'
     )
-    top_bucket_list = models.TextField(blank=True)
     one_important_thing = models.CharField(max_length=200, blank=True)
     favorite_place = models.CharField(max_length=200, blank=True)
-    has_mobility_disability = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_at']
