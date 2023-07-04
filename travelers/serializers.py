@@ -23,7 +23,6 @@ class TravelerSerializer(serializers.ModelSerializer):
             ).first()
             return following.id if following else None
         return None
-    
 
     class Meta:
         model = Traveler
@@ -31,6 +30,5 @@ class TravelerSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'content', 'image', 'is_owner', 'following_id',
             'posts_count', 'followers_count', 'following_count',
-            'has_mobility_disability', 'one_important_thing',
-            'favorite_place'
+            'one_important_thing', 'favorite_place'
         ]
