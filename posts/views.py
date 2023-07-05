@@ -40,6 +40,8 @@ class PostList(generics.ListCreateAPIView):
         'title',
         'country',
     ]
+
+    # Define fields for ordering
     ordering_fields = [
         'likes_count',
         'comments_count',

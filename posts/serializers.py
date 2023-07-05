@@ -19,12 +19,14 @@ class PostSerializer(serializers.ModelSerializer):
     bucketlists_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
 
+    # Convert creation and update timt to human readable format
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
 
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
+    # Validat image size and dimensions
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
@@ -38,10 +40,12 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
+    # Check if the authenticated user is the owner of the post
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
+    # Get like ID associated with teh authenticated user and the post
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -51,6 +55,7 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+    # Get bucketlist ID associated with the authenticated user and the post
     def get_bucketlist_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:

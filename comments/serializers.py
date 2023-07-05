@@ -20,10 +20,13 @@ class CommentSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
+        # Determine if the current user is the owner of the object.
         request = self.context['request']
         return request.user == obj.owner
 
     def get_like_id(self, obj):
+        # Retrive the ID of a "Like" if it exists for the
+        # authenticated user and object.
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
@@ -33,9 +36,11 @@ class CommentSerializer(serializers.ModelSerializer):
         return None
 
     def get_created_at(self, obj):
+        # Convert the created_at timestamp to a human-readable form.
         return naturaltime(obj.created_at)
 
     def get_updated_at(self, obj):
+        # Convert the updated_at timestamp to a human-readable form.
         return naturaltime(obj.updated_at)
 
     class Meta:

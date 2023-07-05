@@ -12,10 +12,13 @@ class TravelerSerializer(serializers.ModelSerializer):
     following_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
+        # Method to check if the authenticated user is the owner
         request = self.context['request']
         return request.user == obj.owner
 
     def get_following_id(self, obj):
+        # Method to get the ID of the 'Follower' relationship of
+        # the authenticated user and the owner of Traveler if it exists
         user = self.context['request'].user
         if user.is_authenticated:
             following = Follower.objects.filter(
