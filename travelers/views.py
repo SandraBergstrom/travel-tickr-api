@@ -29,8 +29,8 @@ class TravelerList(generics.ListAPIView):
         'posts_count',
         'followers_count',
         'following_count',
-        'owner_following_created_at',
-        'owner_followed_created_at',
+        'owner__following__created_at',
+        'owner__followed__created_at',
     ]
 
 
