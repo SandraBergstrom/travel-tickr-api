@@ -19,21 +19,26 @@ class PostList(generics.ListCreateAPIView):
         bucketlists_count=Count('bucketlist', distinct=True)
     ).order_by('-created_at')
 
+    # Define filter backends for ordering, searching and filtering
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
-    
+
+    # Define fields for filtering
     filterset_fields = [
         'owner__followed__owner__traveler',
         'likes__owner__traveler',
         'bucketlist__owner__traveler',
         'owner__traveler',
     ]
+
+    # Define fields for searching
     search_fields = [
         'owner__username',
         'title',
+        'country',
     ]
     ordering_fields = [
         'likes_count',
