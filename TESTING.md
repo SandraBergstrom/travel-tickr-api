@@ -3,12 +3,11 @@ The testing.md file provides an overview of the testing conducted on Travel Tick
 
 ## Table of Content
 
-1. [Code Validation](#html-validation)
-    1. [Python Validation](#python-validation)
-2. [Automated testing]()
+1. [Code Validation](#code-validation)
+2. [Automated testing](#automated-testing)
 3. [Summary](#summary)
 
-### Python Validation 
+### Code Validation 
 [PEP 8](https://pep8ci.herokuapp.com/) is a style guide for writing Python code to ensure consistency and readability. It provides guidelines on how to format code, naming conventions for variables and functions, and other best practices. Following PEP 8 helps to improve code quality, readability, and maintainability.
 
 #### backend
@@ -70,3 +69,44 @@ The testing.md file provides an overview of the testing conducted on Travel Tick
 |views|No errors|[Result](/docs//testing/travelers/views.png)| :white_check_mark:
 
 Note: The specific details and validation results for each file can be viewed by expanding the corresponding sections.
+
+### Automated testing
+
+The application have used some automated testing to ensure the functionality of the Post API endpoints as well as the consistent extension of teh User model with the Traveler model. Her is an overview of the tests:
+
+**Post Listing:** To verify that the API correctly lists the posts available.
+**Post Creation:** To check whether an authenticated user can successfully create a post.
+**Unauthorized Post Creation:** To ensure that unauthenticated users are not allowed to create posts.
+**Post Retrieval:** The test verify that posts can be retrieved using valid identifiers. Additionally, it will check that the system correctly handles retrieval requests for non-existent posts.
+**Post Updates:** To confirm that a user can update their own posts, and importantly, they cannot modify other user's posts. 
+**User-Traveler Consistency:** We run tests to confirm that each user is always extended with the Traveler model. 
+
+To run the tests, navigate to the main directory of the project and execute the following command in the terminal:
+
+```bash
+python manage.py test 
+```
+Upon successful execution of the tests, you should see output similar to the following:
+```bash
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+....OrderedDict([('count', 1), ('next', None), ('previous', None), ('results', [OrderedDict([('id', 1), ('owner', 'testUser'), ('is_owner', False), ('traveler_id', 1), ('traveler_image', 'https://res.cloudinary.com/sandrabergstrom/image/upload/v1/media/../default_profile_uwgpte'), ('created_at', 'now'), ('updated_at', 'now'), ('title', 'test title'), ('content', ''), ('image', 'https://res.cloudinary.com/sandrabergstrom/image/upload/v1/media/../default_post_rgq6aq'), ('likes_count', 0), ('comments_count', 0), ('like_id', None), ('bucketlists_count', 0), ('bucketlist_id', None), ('location', 'Somewhere'), ('country', 'Unknown')])])])
+4
+....
+----------------------------------------------------------------------
+Ran 8 tests in 1.077s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+This signifies that all tests have passed successfully. If any test fails, the output will clearly specify which test failed and the reason to failure. If you see an output similar to the above, it means your setup is working as expected. 
+
+### Summary
+The testing process for the Travel Tickr API has been thorouhg and comprehensive, ensuring the platform's robustness and reliability. Each module of the application has been tested for errors with the PEP 8 tool to enforce Python's best practices in coding standards.
+
+Automated testing has been a essential part of the testing process. These tests cover the most crucial functionalities such as post listing, post creation, post retrieval, post updates, and user-traveler consistency.
+
+In addition to these backend tests, comprehensive frontend tests will be carried out to test user stories and perform a full manual test. The fronted tests will further evaluate how the backend API is integrated into the application and how it funcitons in response to user interactions. This combined frontend and backend testing approach offers a more holistic assessment of the entire application and further guarantees that the application's functionality meets user expectaions. 
+
+All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. To see the full testing of the front end plese [click here](https://github.com/SandraBergstrom/travel-tickr/blob/main/TESTING.md).
