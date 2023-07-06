@@ -102,11 +102,12 @@ Destroying test database for alias 'default'...
 
 This signifies that all tests have passed successfully. If any test fails, the output will clearly specify which test failed and the reason to failure. If you see an output similar to the above, it means your setup is working as expected. 
 
+### Manual testing
+Throughout the development process, rigorous manual testing was performed to ensure the effective operation of the backend components. Each API endpoint was tested for correct functionality, response, and error handling. Database interactions were also scrutinized to confirm data integrity, accuracy and consistency. This level of detailed manual testing has proven essential in validating the performance of the backend and its seamless integration with the frontend application.
+
 ### Summary
-The testing process for the Travel Tickr API has been thorouhg and comprehensive, ensuring the platform's robustness and reliability. Each module of the application has been tested for errors with the PEP 8 tool to enforce Python's best practices in coding standards.
+The testing process for the Travel Tickr API has been exhaustive and meticulous, reinforcing the robustness and reliability of the platform. Python's best coding practices were upheld by utilizing the PEP 8 tool to check for errors in each application module.
 
-Automated testing has been a essential part of the testing process. These tests cover the most crucial functionalities such as post listing, post creation, post retrieval, post updates, and user-traveler consistency.
+Automated testing has been a critical part of the process, covering key functionalities such as post listing, post creation, post retrieval, post updates, and user-traveler consistency.
 
-In addition to these backend tests, comprehensive frontend tests will be carried out to test user stories and perform a full manual test. The fronted tests will further evaluate how the backend API is integrated into the application and how it funcitons in response to user interactions. This combined frontend and backend testing approach offers a more holistic assessment of the entire application and further guarantees that the application's functionality meets user expectaions. 
-
-All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. To see the full testing of the front end plese [click here](https://github.com/SandraBergstrom/travel-tickr/blob/main/TESTING.md).
+All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. For a detailed account of the front-end testing, please  [click here](https://github.com/SandraBergstrom/travel-tickr/blob/main/TESTING.md).
