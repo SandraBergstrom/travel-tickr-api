@@ -1,4 +1,55 @@
+# Travel Tickr API Documentation
 
+Welcome to the Travel Tickr API documentation. This readme provides information about the API endpoints and functionalities. For the documentation of the Travel Tickr web app, please visit the following link: [Travel Tickr Repository](https://github.com/SandraBergstrom/travel-tickr-api).
+
+## Table of Content
+- [Database](#database)
+  * [Bucketlist:](#bucketlist-)
+  * [Comment:](#comment-)
+  * [Follower:](#follower-)
+  * [Like:](#like-)
+  * [Post:](#post-)
+  * [Traveler:](#traveler-)
+- [Bugs](#bugs)
+  * [Known bugs](#known-bugs)
+  * [Fixed bugs](#fixed-bugs)
+- [Testing](#testing)
+  * [Languages](#languages)
+  * [Frameworks](#frameworks)
+  * [Database](#database-1)
+  * [Tools](#tools)
+  * [Supporting Libraries and Packages](#supporting-libraries-and-packages)
+- [Deployment](#deployment)
+  * [Django Documentation:](#django-documentation-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+## Database
+The Travel Tickr utilizes the following database schema:
+<details><summary>See Database Schema</summary>
+<img src="/docs/database-diagram.png">
+</details> <br>
+
+### Bucketlist: 
+This model represents the list of posts that a user wants to keep track of. It is related to the User model (as the owner of the bucketlist) and the Post model. 
+
+### Comment: 
+This model represents comments made by users. It is associated with the User model (as the owner of the comment) and the Post model. In addition to the content of the comment, it keeps track of the times when each comment was created and last updated.
+
+### Follower: 
+This model maintains the follower-following relationships between users. It is related to the User model twice, once for the owner of the follow (the follower) and once for the followed user. A timestamp of each follow event is also stored.
+
+### Like: 
+This model captures the likes given by users either to a post or a comment. It is linked to the User, Post, and Comment models. It also records the time when each like event was created.
+
+### Post: 
+This model represents the posts made by users. It is related to the User model as the owner of the post. It keeps track of the times when each post was created and last updated, along with the content of the post including the title, image, and location information.
+
+### Traveler: 
+This model extends the User model with additional traveler-specific information such as their name, profile image, and other personal details. It also keeps timestamps of when each traveler profile was created and last updated. The creation of a Traveler object is automatically triggered by the creation of a User object, thanks to the post_save signal connected to the create_traveler function.
+
+Each of these models serves a unique purpose and together they support a range of features in your application, from user registration and social networking to content creation and curation.
 
 ## Bugs
 
@@ -6,17 +57,23 @@
 
 | **Bug** | **Status** |
 | ----------- | ----------- |
-| []()|  |
-|||
+| [iPhone X log in](https://github.com/SandraBergstrom/travel-tickr-api/issues/3)| There is a known bug identified in the initial codebase that has been acknowledged and will not be addressed prior to the project submission. |
 
 ### Fixed bugs 
+Here is a summary of the identified bugs along with brief descriptions of their fixes. For more detailed information, please follow the provided link to the corresponding GitHub issue, where you can track the entire process including the bug report, commits, and the steps taken to resolve the issue.
 
 | **Bug** | **Fix** |
 | ----------- | ----------- |
 |[Submit issue with registration form](https://github.com/SandraBergstrom/travel-tickr-api/issues/1)|Correct CORS settings|
+|[Can't follow some travelers](https://github.com/SandraBergstrom/travel-tickr/issues/60#issue-1789572956)|See details and steps in link to issue|
+|[Likes_count showing NaN in comments](https://github.com/SandraBergstrom/travel-tickr-api/issues/4#issue-1793434957)|Correct connection in queryset for comments|
+|[Filter function is not working](https://github.com/SandraBergstrom/travel-tickr/issues/48#issue-1775479887)|Added filter used in frontend|
 
 
 [Back up](#table-of-content)
+
+## Testing
+All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. See [full testing documentiation](https://github.com/SandraBergstrom/travel-tickr-api/blob/main/TESTING.md).
 
 ### Languages
 - Python
@@ -59,3 +116,7 @@ Deploying the Django backend of the Travel Tickr application involves below step
 7. **Verify Deployment**: Once the deployment is successful, Heroku will provide a URL to access the live application. Test the application to ensure all components are functioning properly.
 
 Remember to avoid exposing your environment variables in your public repository. Use the Config Vars section in Heroku to securely set your environment variables.
+
+### Django Documentation:
+[django-versatileimagefield - Custom filters](https://django-versatileimagefield.readthedocs.io/en/2.1/writing_custom_sizers_and_filters.html)
+[Pillow - Image module ](https://pillow.readthedocs.io/en/stable/reference/Image.html)

@@ -2,7 +2,6 @@
 The testing.md file provides an overview of the testing conducted on Travel Tickr webapp. It covers code validation, accessibility, performance, testing on various devices, browser compatibility, testing user stories, and user feedback and improvements. Each section describes the tools used, the issues found (if any), and the corresponding test results.
 
 ## Table of Content
-
 1. [Code Validation](#code-validation)
 2. [Automated testing](#automated-testing)
 3. [Summary](#summary)
