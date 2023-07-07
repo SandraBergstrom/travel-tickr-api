@@ -4,7 +4,8 @@ The testing.md file provides an overview of the testing conducted on Travel Tick
 ## Table of Content
 1. [Code Validation](#code-validation)
 2. [Automated testing](#automated-testing)
-3. [Summary](#summary)
+3. [Manual testing](#manual-testing)
+4. [Summary](#summary)
 
 ### Code Validation 
 [PEP 8](https://pep8ci.herokuapp.com/) is a style guide for writing Python code to ensure consistency and readability. It provides guidelines on how to format code, naming conventions for variables and functions, and other best practices. Following PEP 8 helps to improve code quality, readability, and maintainability.
