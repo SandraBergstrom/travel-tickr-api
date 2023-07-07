@@ -120,7 +120,7 @@ These manual testing steps were undertaken to validate the correct functioning a
 #### URL Testing
 | **Tested** | **Expected result** | **Result** | **Pass** |
 --- | --- | --- | :---:
-|Root URL||Works as expected| :white_check_mark:
+|Root URL|Show welcome message|Works as expected| :white_check_mark:
 |/bucketlist|Display bucketslist |Works as expected| :white_check_mark:
 |/bucketlist/{id}|Display bucketlist detail|Works as expected| :white_check_mark:
 |/posts|Display posts list |Works as expected| :white_check_mark:
