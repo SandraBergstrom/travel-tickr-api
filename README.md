@@ -73,7 +73,7 @@ Here is a summary of the identified bugs along with brief descriptions of their 
 [Back up](#table-of-content)
 
 ## Testing
-All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. See [full testing documentiation](https://github.com/SandraBergstrom/travel-tickr-api/blob/main/TESTING.md).
+All tests for the Travel Tickr API have been passed, demonstrating its readiness for deployment and public use. See [full testing documentation](https://github.com/SandraBergstrom/travel-tickr-api/blob/main/TESTING.md).
 
 ### Languages
 - Python
