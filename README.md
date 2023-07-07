@@ -1,5 +1,5 @@
 # Travel Tickr API Documentation
-# ![Logo](/docs/travel.jpg)
+![Logo](/docs/travel.jpg)
 
 Welcome to the Travel Tickr API documentation. This readme provides information about the API endpoints and functionalities. For the documentation of the Travel Tickr web app, please visit the following link: [Travel Tickr Repository](https://github.com/SandraBergstrom/travel-tickr-api).
 
