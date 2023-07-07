@@ -103,7 +103,49 @@ Destroying test database for alias 'default'...
 This signifies that all tests have passed successfully. If any test fails, the output will clearly specify which test failed and the reason to failure. If you see an output similar to the above, it means your setup is working as expected. 
 
 ### Manual testing
-Throughout the development process, rigorous manual testing was performed to ensure the effective operation of the backend components. Each API endpoint was tested for correct functionality, response, and error handling. Database interactions were also scrutinized to confirm data integrity, accuracy and consistency. This level of detailed manual testing has proven essential in validating the performance of the backend and its seamless integration with the frontend application.
+During the manual testing of the API, the following steps were performed:
+1. Ensured that all URL paths were created correctly and functioning without any errors.
+2. Verification of CRUD Functionality:
+- Verified the functionality of Create, Read, Update, and Delete operations for various entities such as posts, bucketlists, comments, followers, likes, and travelers
+- Created new items and confirmed the proper functioning of the corresponding URLs
+- Verified the Edit functionality (excluding followers and likes).
+- Tested the delete function to ensure its correctness.
+- Check delete function
+3. Validation of Post Search Functionality:
+- Tested the search functionality specifically for posts.
+- Ensured that the search feature for posts was functioning as expected.
+
+These manual testing steps were undertaken to validate the correct functioning and behavior of the API.
+
+#### URL Testing
+| **Tested** | **Expected result** | **Result** | **Pass** |
+--- | --- | --- | :---:
+|Root URL||Works as expected| :white_check_mark:
+|/bucketlist|Display bucketslist |Works as expected| :white_check_mark:
+|/bucketlist/{id}|Display bucketlist detail|Works as expected| :white_check_mark:
+|/posts|Display posts list |Works as expected| :white_check_mark:
+|/posts/{id}|Display posts detail|Works as expected| :white_check_mark:
+|/comments|Display comments list |Works as expected| :white_check_mark:
+|/comments/{id}|Display comment detail|Works as expected| :white_check_mark:
+|/likes|Display likes list |Works as expected| :white_check_mark:
+|/likes/{id}|Display like detail|Works as expected| :white_check_mark:
+|/travelers|Display travelers list |Works as expected| :white_check_mark:
+|/travelers/{id}|Display traveler detail|Works as expected| :white_check_mark:
+|/followers|Display followers list |Works as expected| :white_check_mark:
+|/followers/{id}|Display follower detail|Works as expected| :white_check_mark:
+
+#### CRUD functionality
+| **Tested** | **Create** | **View** | **Update** | **Delete** |
+--- | --- | --- | :---:| :---:
+|Bucketlist|:white_check_mark:|:white_check_mark:|-|:white_check_mark:
+|Post|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:
+|Comment|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:
+|Like|:white_check_mark:|:white_check_mark:|-|:white_check_mark:
+|Follow|:white_check_mark:|:white_check_mark:|-|:white_check_mark:
+|Traveler|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:
+
+#### Search functionality
+- Searching for Title, Traveler and Country is working as expected.
 
 ### Summary
 The testing process for the Travel Tickr API has been exhaustive and meticulous, reinforcing the robustness and reliability of the platform. Python's best coding practices were upheld by utilizing the PEP 8 tool to check for errors in each application module.
